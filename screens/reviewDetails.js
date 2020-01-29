@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
+import Card from '../shared/card';
 import { globalStyles } from '../styles/global';
 
 export default function ReviewDetails({ navigation }) {
@@ -15,14 +16,16 @@ export default function ReviewDetails({ navigation }) {
 
     return (
         <View style={globalStyles.container}>
-            <Text style={globalStyles.titleText}>ReviewDetails Screen</Text>
-            <Text>Title : {navigation.getParam('title', 'NO-TITLE')}</Text>
-            <Text>Body: {navigation.getParam('body', 'NO-BODY')}</Text>
-            <Text>Rating : {navigation.getParam('rating', 0)}</Text>
-            <Button
-                title="back to home screen"
-                onPress={pressHandler}
-            />
+            <Card>
+                <Text style={globalStyles.titleText}>ReviewDetails Screen</Text>
+                <Text>Title : {navigation.getParam('title', 'NO-TITLE')}</Text>
+                <Text>Body: {navigation.getParam('body', 'NO-BODY')}</Text>
+                <Text>Rating : {navigation.getParam('rating', 0)}</Text>
+                <Button
+                    title="back to home screen"
+                    onPress={pressHandler}
+                />
+            </Card>
         </View>
     );
 }
