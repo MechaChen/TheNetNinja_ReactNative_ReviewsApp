@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View, Text, Button, Image } from 'react-native';
 import Card from '../shared/card';
 import { globalStyles } from '../styles/global';
+import { images } from '../styles/global';
 
 export default function ReviewDetails({ navigation }) {
-    const [reviews, setReviews] = useState([
-        { title: 'Zelda, Breath of Fresh Air', rating: 5, body: 'lorem ipsum', key: 1 },
-        { title: 'Gotta Catch Them All (again)', rating : 4, body: 'lorem ipsum', key: 2 },
-        { title: 'Not So "Final" Fantasy', rating: 3, body: 'lorem ipsum', key: 3}
-    ]);
 
     const pressHandler = () => {
         navigation.goBack();
     }
+
+    const rating = navigation.getParam('rating', 1);
 
     return (
         <View style={globalStyles.container}>
@@ -20,12 +18,22 @@ export default function ReviewDetails({ navigation }) {
                 <Text style={globalStyles.titleText}>ReviewDetails Screen</Text>
                 <Text>Title : {navigation.getParam('title', 'NO-TITLE')}</Text>
                 <Text>Body: {navigation.getParam('body', 'NO-BODY')}</Text>
-                <Text>Rating : {navigation.getParam('rating', 0)}</Text>
-                <Button
-                    title="back to home screen"
-                    onPress={pressHandler}
-                />
+                <View style={styles.rating}>
+                    <Text>GameZone rating: </Text>
+                    <Image source={images.ratings[rating]} />
+                </View>
             </Card>
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    rating: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        paddingTop: 16,
+        marginTop: 16,
+        borderTopWidth: 1,
+        borderTopColor: '#eee',
+    }
+});
