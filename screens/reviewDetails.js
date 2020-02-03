@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View, Text, Button, Image } from 'react-native';
 import Card from '../shared/card';
-import { globalStyles } from '../styles/global';
+import { globalStyles, images } from '../styles/global';
 
 export default function ReviewDetails({ navigation }) {
     const [reviews, setReviews] = useState([
@@ -13,6 +13,7 @@ export default function ReviewDetails({ navigation }) {
     const pressHandler = () => {
         navigation.goBack();
     }
+    const ratings = images.ratings;
 
     return (
         <View style={globalStyles.container}>
@@ -20,7 +21,7 @@ export default function ReviewDetails({ navigation }) {
                 <Text style={globalStyles.titleText}>ReviewDetails Screen</Text>
                 <Text>Title : {navigation.getParam('title', 'NO-TITLE')}</Text>
                 <Text>Body: {navigation.getParam('body', 'NO-BODY')}</Text>
-                <Text>Rating : {navigation.getParam('rating', 0)}</Text>
+                <Image source={ratings[navigation.getParam('rating', 0)]} />
                 <Button
                     title="back to home screen"
                     onPress={pressHandler}
