@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, Button, FlatList, TouchableOpacity, Modal } fro
 import Card from '../shared/card';
 import { globalStyles } from '../styles/global';
 import { MaterialIcons } from '@expo/vector-icons';
+import ReviewForm from './reviewForm';
 
 export default function Home({ navigation }) {
     const [modalOpen, setModalOpen] = useState(false);
@@ -23,7 +24,7 @@ export default function Home({ navigation }) {
                         onPress={() => setModalOpen(false)}
                         style={{ ...styles.modalToggle, ...styles.modalClose }}
                     />
-                    <Text>Hello from the modal :D</Text>
+                    <ReviewForm />
                 </View>
             </Modal>
 
